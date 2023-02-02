@@ -17,7 +17,7 @@ function App() {
     ]);
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:8080", {
+      const res = await axios.post("https://auto-caller-back.vercel.app/", {
         customer_message: message,
       });
       console.log(res);
