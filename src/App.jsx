@@ -17,9 +17,18 @@ function App() {
     ]);
     setLoading(true);
     try {
-      const res = await axios.post("https://auto-caller-back.vercel.app/", {
+      let data = JSON.stringify({
         customer_message: message,
       });
+      let config = {
+        method: "post",
+        url: "https://auto-caller-back.vercel.app/",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+      const res = await axios(config);
       console.log(res);
       setMessages((prev) => [
         ...prev,
