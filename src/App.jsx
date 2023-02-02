@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./App.css";
 import axios from "axios";
+import uuid from "react-uuid";
 
 function App() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [id, setId] = useState(uuid());
 
   const makeRequest = async () => {
     setMessages((prev) => [
@@ -19,6 +21,7 @@ function App() {
     try {
       let data = JSON.stringify({
         customer_message: message,
+        user_id: id,
       });
       let config = {
         method: "post",
