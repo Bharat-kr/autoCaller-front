@@ -40,6 +40,8 @@ function App() {
           text: res.data.response,
         },
       ]);
+      let utterance = new SpeechSynthesisUtterance(res.data.response);
+      speechSynthesis.speak(utterance);
       setMessage("");
       setLoading(false);
     } catch (error) {
